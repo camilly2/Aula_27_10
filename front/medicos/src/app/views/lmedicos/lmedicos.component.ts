@@ -11,11 +11,12 @@ import { MedicoService } from 'src/app/services/medico/medico.service';
 export class LmedicosComponent implements OnInit {
 
   medicos$!: Observable<Medico[]>;
+  displayedColumns = ['Medico'];
   constructor(private serviceMedico: MedicoService) {
-    this.serviceMedico.listaDeMedicos()
+    this.medicos$ = this.serviceMedico.listaDeMedicos()
       .pipe(
         catchError((err) => {
-          console.log(err);
+          console.log('erro',err);
           return of([]);
         }
         )

@@ -22,6 +22,17 @@ const pool = mysql2.createPool({
 })
 
 
+app.use((req,res,next) => {
+  res.header("Acess-Control-Allow-Origin", "http://localhost:4200");
+  res.header("Acess-Control-Allow-Methods", "GET, POST, PATCH, PUT");
+  res.header("Acess-Control-Credentials", "true");
+  res.header("Acess-Control-Allow-Headers", "Origin, X-Requested-with, Content-Type,Accept");
+
+  app.use(cors())
+  next()
+})
+
+
 //POST http://localhost:3000/medicos
 app.post('/medicos', (req, res) => {
 

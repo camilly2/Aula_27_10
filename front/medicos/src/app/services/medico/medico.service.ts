@@ -10,7 +10,7 @@ export class MedicoService {
   constructor(private httpClient: HttpClient) { }
 
   listaDeMedicos() {
-    return this.httpClient.get<Medico>('htpp://localhost:3000/medicos')
+    return this.httpClient.get<Medico[]>('htpp://localhost:3000/medicos')
       .pipe(
         (res) => res,
         (err) => err
